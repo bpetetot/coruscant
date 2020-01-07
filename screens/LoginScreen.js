@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, Button, View } from "react-native";
-import { IOS_CLIENT_ID, ANDROID_CLIENT_ID } from 'react-native-dotenv'
+import { IOS_CLIENT_ID, ANDROID_CLIENT_ID } from "react-native-dotenv";
 import * as Google from "expo-google-app-auth";
 
-import firebase from 'firebase';
+import firebase from "firebase";
 
 export default function LoginScreen({ navigation }) {
   const googleSignIn = async () => {
@@ -15,7 +15,10 @@ export default function LoginScreen({ navigation }) {
       });
       if (type === "success") {
         console.log({ accessToken, user });
-        const credential = firebase.auth.GoogleAuthProvider.credential(null, accessToken);
+        const credential = firebase.auth.GoogleAuthProvider.credential(
+          null,
+          accessToken
+        );
         await firebase
           .auth()
           .signInWithCredential(credential)
@@ -28,7 +31,7 @@ export default function LoginScreen({ navigation }) {
       }
     } catch (error) {
       console.log(error);
-      return { error: true }
+      return { error: true };
     }
   };
 

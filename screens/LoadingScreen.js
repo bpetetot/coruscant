@@ -15,7 +15,7 @@ export default function LoadingScreen({ navigation }) {
       }
     });
 
-    return unsubscribe
+    return unsubscribe;
   });
 
   return (

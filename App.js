@@ -1,25 +1,25 @@
-import React from 'react';
-import { createSwitchNavigator, createAppContainer } from 'react-navigation';
+import React from "react";
+import { createSwitchNavigator, createAppContainer } from "react-navigation";
 
-import LoadingScreen from './screens/LoadingScreen'
-import LoginScreen from './screens/LoginScreen'
-import DashboardScreen from './screens/DashboardScreen'
+import LoadingScreen from "./screens/LoadingScreen";
+import LoginScreen from "./screens/LoginScreen";
+import DashboardScreen from "./screens/DashboardScreen";
 
-import firebase from 'firebase'
-import { firebaseConfig } from './config'
+import firebase from "firebase";
+import { firebaseConfig } from "./config";
 
-firebase.initializeApp(firebaseConfig)
+firebase.initializeApp(firebaseConfig);
 
-const AppNavigation = createAppContainer(createSwitchNavigator(
-  {
+const AppNavigation = createAppContainer(
+  createSwitchNavigator({
     LoadingScreen,
     LoginScreen,
-    DashboardScreen,
-  }
-));
+    DashboardScreen
+  })
+);
 
 const App = () => {
-  return <AppNavigation />
-}
+  return <AppNavigation />;
+};
 
-export default App
+export default App;
