@@ -10,7 +10,9 @@ const DashboardScreen = () => {
   return (
     <View style={styles.container}>
       <CurvedView size="large" imageUri={user.photoURL}>
-        <Text>Dashboard</Text>
+        <Text style={{ color: "white", fontSize: 30, fontWeight: "bold" }}>
+          Dashboard
+        </Text>
       </CurvedView>
       <Text>Dashboard</Text>
     </View>

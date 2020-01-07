@@ -3,17 +3,17 @@ import { StyleSheet, View, Dimensions } from "react-native";
 import Svg, {
   Circle,
   Defs,
-  ClipPath,
   Image,
   LinearGradient,
-  Stop
+  Stop,
+  ClipPath
 } from "react-native-svg";
 
 const window = Dimensions.get("window");
 
 const CURVE_RAY = 800;
 
-const GradientClip = ({ height }) => (
+const ColorGradient = ({ height }) => (
   <>
     <Defs>
       <LinearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -30,9 +30,13 @@ const GradientClip = ({ height }) => (
   </>
 );
 
-const ImageClip = ({ height, imageUri }) => (
+const ImageGradient = ({ height, imageUri }) => (
   <>
     <Defs>
+      <LinearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <Stop offset="0.2" stopColor="rgb(255,255,0)" stopOpacity="0.5" />
+        <Stop offset="0.8" stopColor="red" stopOpacity="0.5" />
+      </LinearGradient>
       <ClipPath id="clip">
         <Circle
           cx={window.width / 2}
@@ -48,6 +52,12 @@ const ImageClip = ({ height, imageUri }) => (
       href={imageUri}
       clipPath="url(#clip)"
     />
+    <Circle
+      cx={window.width / 2}
+      cy={`-${CURVE_RAY - height}`}
+      r={CURVE_RAY}
+      fill="url(#grad)"
+    />
   </>
 );
 
@@ -58,9 +68,9 @@ const CurvedView = ({ children, size = "large", imageUri }) => {
       <View style={styles.clip}>
         <Svg height={height} width="100%">
           {imageUri ? (
-            <ImageClip height={height} imageUri={imageUri} />
+            <ImageGradient height={height} imageUri={imageUri} />
           ) : (
-            <GradientClip height={height} />
+            <ColorGradient height={height} />
           )}
         </Svg>
       </View>

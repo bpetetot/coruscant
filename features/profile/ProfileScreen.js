@@ -11,7 +11,9 @@ const ProfileScreen = () => {
   return (
     <View style={styles.container}>
       <CurvedView size="small">
-        <Text>Paramètres</Text>
+        <Text style={{ color: "white", fontSize: 30, fontWeight: "bold" }}>
+          Paramètres
+        </Text>
       </CurvedView>
       <Image
         source={{ uri: user.photoURL }}
