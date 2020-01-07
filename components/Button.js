@@ -2,8 +2,11 @@ import React from "react";
 import { Text, View, TouchableHighlight } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-const Button = ({ title, onPress, styles = {} }) => (
-  <TouchableHighlight onPress={onPress} style={{ borderRadius: 5, ...styles }}>
+const Button = ({ title, onPress, block }) => (
+  <TouchableHighlight
+    onPress={onPress}
+    style={{ borderRadius: 5, width: block ? "100%" : "auto" }}
+  >
     <LinearGradient
       start={[0, 1]}
       end={[1, 0]}

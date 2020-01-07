@@ -7,6 +7,7 @@ import firebase from "firebase";
 import { AuthProvider } from "./features/auth/context";
 import DashboardScreen from "./features/dashboard/DashboardScreen";
 import ProfileScreen from "./features/profile/ProfileScreen";
+import SettingsScreen from "./features/settings/SettingsScreen";
 import { Feather } from "@expo/vector-icons";
 
 import { firebaseConfig } from "./config";
@@ -21,6 +22,8 @@ const getTabBarIcon = (navigation, focused, tintColor) => {
     iconName = "home";
   } else if (routeName === "Profile") {
     iconName = "user";
+  } else if (routeName === "Settings") {
+    iconName = "settings";
   }
   return <Feather name={iconName} size={25} color={tintColor} />;
 };
@@ -29,7 +32,8 @@ const AppNavigation = createAppContainer(
   createBottomTabNavigator(
     {
       Dashboard: DashboardScreen,
-      Profile: ProfileScreen
+      Profile: ProfileScreen,
+      Settings: SettingsScreen
     },
     {
       defaultNavigationOptions: ({ navigation }) => ({

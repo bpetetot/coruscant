@@ -9,7 +9,7 @@ export default function LoginScreen({ login, loading }) {
       {loading ? (
         <ActivityIndicator size="large" />
       ) : (
-        <Button title="Signin with Google" onPress={() => login()} />
+        <Button title="Signin with Google" block onPress={() => login()} />
       )}
     </View>
   );
@@ -20,6 +20,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    marginLeft: 20,
+    marginRight: 20
   }
 });

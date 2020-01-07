@@ -22,7 +22,9 @@ const DashboardScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center"
+    alignItems: "center",
+    marginLeft: 20,
+    marginRight: 20
   }
 });
 

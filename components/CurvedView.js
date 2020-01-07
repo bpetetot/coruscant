@@ -34,8 +34,8 @@ const ImageGradient = ({ height, imageUri }) => (
   <>
     <Defs>
       <LinearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-        <Stop offset="0.2" stopColor="rgb(255,255,0)" stopOpacity="0.5" />
-        <Stop offset="0.8" stopColor="red" stopOpacity="0.5" />
+        <Stop offset="0.2" stopColor="rgb(255,255,0)" stopOpacity="0.8" />
+        <Stop offset="0.8" stopColor="red" stopOpacity="0.8" />
       </LinearGradient>
       <ClipPath id="clip">
         <Circle
@@ -62,7 +62,7 @@ const ImageGradient = ({ height, imageUri }) => (
 );
 
 const CurvedView = ({ children, size = "large", imageUri }) => {
-  const height = size === "large" ? 300 : 100;
+  const height = size === "large" ? 300 : 80;
   return (
     <View style={styles.container}>
       <View style={styles.clip}>
