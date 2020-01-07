@@ -1,21 +1,18 @@
 import React from "react";
 import { StyleSheet, Text, Button, View } from "react-native";
 
-import firebase from "firebase";
+import { useAuth } from "../auth/context";
 
-export default function DashboardScreen({ navigation }) {
-  const signOut = () => {
-    firebase.auth().signOut();
-    navigation.navigate("LoadingScreen");
-  };
+const DashboardScreen = () => {
+  const { logout } = useAuth();
 
   return (
     <View style={styles.container}>
       <Text>Dashboard screen</Text>
-      <Button title="Signout" onPress={signOut} />
+      <Button title="Signout" onPress={logout} />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -25,3 +22,5 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   }
 });
+
+export default DashboardScreen;
