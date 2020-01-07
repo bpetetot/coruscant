@@ -44,7 +44,6 @@ export const AuthProvider = ({ children }) => {
           .catch(error => {
             console.error(error);
           });
-        navigation.navigate("DashboardScreen");
       }
     } catch (error) {
       console.log(error);

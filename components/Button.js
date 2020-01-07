@@ -1,0 +1,26 @@
+import React from "react";
+import { Text, View, TouchableHighlight } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+
+const Button = ({ title, onPress, styles = {} }) => (
+  <TouchableHighlight onPress={onPress} style={{ borderRadius: 5, ...styles }}>
+    <LinearGradient
+      start={[0, 1]}
+      end={[1, 0]}
+      colors={["#43D4FF", "#38ABFD", "#2974FA"]}
+      style={{ padding: 15, alignItems: "center", borderRadius: 5 }}
+    >
+      <Text
+        style={{
+          backgroundColor: "transparent",
+          fontSize: 15,
+          color: "#fff"
+        }}
+      >
+        {title}
+      </Text>
+    </LinearGradient>
+  </TouchableHighlight>
+);
+
+export default Button;

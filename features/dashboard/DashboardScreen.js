@@ -1,15 +1,18 @@
 import React from "react";
-import { StyleSheet, Text, Button, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 import { useAuth } from "../auth/context";
+import CurvedView from "../../components/CurvedView";
 
 const DashboardScreen = () => {
-  const { logout } = useAuth();
+  const { user, logout } = useAuth();
 
   return (
     <View style={styles.container}>
-      <Text>Dashboard screen</Text>
-      <Button title="Signout" onPress={logout} />
+      <CurvedView size="large" imageUri={user.photoURL}>
+        <Text>Dashboard</Text>
+      </CurvedView>
+      <Text>Dashboard</Text>
     </View>
   );
 };
@@ -17,9 +20,7 @@ const DashboardScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
+    alignItems: "center"
   }
 });
 

@@ -1,5 +1,7 @@
 import React from "react";
-import { StyleSheet, Button, View, ActivityIndicator } from "react-native";
+import { StyleSheet, View, ActivityIndicator } from "react-native";
+
+import Button from "../../components/Button";
 
 export default function LoginScreen({ login, loading }) {
   return (
