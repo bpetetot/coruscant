@@ -10,5 +10,11 @@ npm-debug.*
 web-build/
 web-report/
 
+# dotenv
+.env
+
+# firebase
+config.js
+
 # macOS
 .DS_Store
