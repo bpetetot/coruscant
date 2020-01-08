@@ -1,27 +1,38 @@
 import React from "react";
-import { StyleSheet, View, ActivityIndicator } from "react-native";
+import { StyleSheet, View, Text, ActivityIndicator } from "react-native";
 
+import { Containers, Typography } from "../../styles";
 import Button from "../../components/Button";
+import CurvedView from "../../components/CurvedView";
 
 export default function LoginScreen({ login, loading }) {
+  if (loading) {
+    return (
+      <View style={styles.centered}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
   return (
     <View style={styles.container}>
-      {loading ? (
-        <ActivityIndicator size="large" />
-      ) : (
-        <Button title="Signin with Google" block onPress={() => login()} />
-      )}
+      <CurvedView size="large" withGradient>
+        <Text style={styles.header}>Conference Hall</Text>
+      </CurvedView>
+      <View style={styles.centered}>
+        <Button title="Signin with Google" block onPress={login} />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-    marginLeft: 20,
-    marginRight: 20
+    ...Containers.base
+  },
+  header: {
+    ...Typography.mainHeader
+  },
+  centered: {
+    ...Containers.centered
   }
 });

@@ -9,6 +9,8 @@ import Svg, {
   ClipPath
 } from "react-native-svg";
 
+import { Spacing } from "../styles";
+
 const window = Dimensions.get("window");
 
 const CURVE_RAY = 800;
@@ -30,7 +32,7 @@ const ColorGradient = ({ height }) => (
   </>
 );
 
-const ImageGradient = ({ height, imageUri }) => (
+const ImageGradient = ({ height, imageUri, withGradient }) => (
   <>
     <Defs>
       <LinearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -52,23 +54,35 @@ const ImageGradient = ({ height, imageUri }) => (
       href={imageUri}
       clipPath="url(#clip)"
     />
-    <Circle
-      cx={window.width / 2}
-      cy={`-${CURVE_RAY - height}`}
-      r={CURVE_RAY}
-      fill="url(#grad)"
-    />
+    {withGradient && (
+      <Circle
+        cx={window.width / 2}
+        cy={`-${CURVE_RAY - height}`}
+        r={CURVE_RAY}
+        fill="url(#grad)"
+      />
+    )}
   </>
 );
 
-const CurvedView = ({ children, size = "large", imageUri }) => {
+const CurvedView = ({
+  children,
+  size = "large",
+  imageUri,
+  withGradient = false,
+  style = {}
+}) => {
   const height = size === "large" ? 300 : 80;
   return (
-    <View style={styles.container}>
+    <View style={{ ...styles.container, ...style }}>
       <View style={styles.clip}>
         <Svg height={height} width="100%">
           {imageUri ? (
-            <ImageGradient height={height} imageUri={imageUri} />
+            <ImageGradient
+              height={height}
+              imageUri={imageUri}
+              withGradient={withGradient}
+            />
           ) : (
             <ColorGradient height={height} />
           )}
@@ -91,7 +105,7 @@ const styles = StyleSheet.create({
     width: window.width,
     justifyContent: "center",
     alignItems: "center",
-    paddingTop: 20
+    paddingTop: Spacing.base
   }
 });
 
